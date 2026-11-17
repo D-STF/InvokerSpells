@@ -2,6 +2,7 @@ import random
 from spells import Spells_DotA1, Spells_DotA2
 
 class InvokerSpells:
+
     def __init__(self, mode='dota1'):
         self.mode = mode
         self.target_spell = None
@@ -13,7 +14,6 @@ class InvokerSpells:
         self.is_game_over = False
 
         self.next_spell()
-
 
     def invoke(self):
         if self.is_game_over or len(self.orbs) < 3:
@@ -30,7 +30,6 @@ class InvokerSpells:
             self.score += 1
             self.next_spell()
 
-
     def press_orb(self, orb_type):
         if self.is_game_over:
             return
@@ -40,9 +39,14 @@ class InvokerSpells:
                 self.orbs.pop(0)
 
     def next_spell(self):
-        random_cast = random.choice(list(self.spells.keys()))
+        available_casts = list(self.spells.keys())
+        if self.target_spell is not None and len(available_casts) > 1:
+            available_casts = [
+                cast for cast in available_casts
+                if self.spells[cast] != self.target_spell
+            ]
+        random_cast = random.choice(available_casts)
         self.target_spell = self.spells[random_cast]
-
 
     def updating(self, delta_time):
         if not self.is_game_over:
@@ -57,13 +61,11 @@ class InvokerSpells:
             self.mode = mode
             self.spells = Spells_DotA1 if self.mode == 'dota1' else Spells_DotA2
 
-
         self.orbs = []
         self.invoked_spell = None
         self.score = 0
         self.time_left = 60.0
         self.is_game_over = False
-
         self.next_spell()
 
     def toggle_mode(self):
@@ -91,6 +93,3 @@ if __name__ == "__main__":
 
     game.invoke()
     print(f"Ваше заклинание: {game.invoked_spell['name']}")
-
-
-
