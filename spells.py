@@ -13,7 +13,7 @@ Spells_DotA1 = {
     ('W', 'Q', 'E'): {'name': 'Soul Blast', 'icon': 'soul_blast.png'},
     ('W', 'W', 'Q'): {'name': 'Telelightning', 'icon': 'telelightning.png'},
     ('W', 'W', 'W'): {'name': 'Shock', 'icon': 'shock.png'},
-    ('W', 'W', 'E'): {'name': 'Arcane Arts', 'icon': 'shock.png'},
+    ('W', 'W', 'E'): {'name': 'Arcane Arts', 'icon': 'arcane_arts.png'},
     ('W', 'E', 'Q'): {'name': 'Scout', 'icon': 'scout.png'},
     ('W', 'E', 'W'): {'name': 'Energy Ball', 'icon': 'energy_ball.png'},
     ('W', 'E', 'E'): {'name': 'Lightning Shield', 'icon': 'lightning_shield.png'},
