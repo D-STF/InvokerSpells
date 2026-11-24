@@ -25,7 +25,7 @@ Spells_DotA1 = {
     ('E', 'W', 'E'): {'name': 'Incinerate', 'icon': 'incinerate.png'},
     ('E', 'E', 'Q'): {'name': 'Deafening Blast', 'icon': 'deafening_blast.png'},
     ('E', 'E', 'W'): {'name': 'Inferno', 'icon': 'inferno.png'},
-    ('E', 'E', 'E'): {'name': 'Fireblast', 'icon': 'fireblast.png'},
+    ('E', 'E', 'E'): {'name': 'Firebolt', 'icon': 'firebolt.png'},
 }
 
 Spells_DotA2 = {
