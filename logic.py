@@ -2,7 +2,7 @@ import random
 from spells import Spells_DotA1, Spells_DotA2
 
 class InvokerSpells:
-
+    '''Основной класс логики'''
     def __init__(self, mode='dota1'):
         self.mode = mode
         self.target_spell = None
@@ -15,7 +15,9 @@ class InvokerSpells:
 
         self.next_spell()
 
+
     def invoke(self):
+        '''Функция инвока'''
         if self.is_game_over or len(self.orbs) < 3:
             return
 
@@ -30,7 +32,9 @@ class InvokerSpells:
             self.score += 1
             self.next_spell()
 
+
     def press_orb(self, orb_type):
+        '''Добавление орба по нажатию'''
         if self.is_game_over:
             return
         if orb_type in ('Q', 'W', 'E'):
@@ -38,7 +42,9 @@ class InvokerSpells:
             if len(self.orbs) > 3:
                 self.orbs.pop(0)
 
+
     def next_spell(self):
+        '''Переход к следующему заклинанию'''
         available_casts = list(self.spells.keys())
         if self.target_spell is not None and len(available_casts) > 1:
             available_casts = [
@@ -48,14 +54,18 @@ class InvokerSpells:
         random_cast = random.choice(available_casts)
         self.target_spell = self.spells[random_cast]
 
+
     def updating(self, delta_time):
+        '''Апдейт окружения'''
         if not self.is_game_over:
             self.time_left -= delta_time
             if self.time_left <= 0:
                 self.time_left = 0
                 self.is_game_over = True
 
+
     def reset(self, mode=None):
+        '''Функция сброса значений (для выбора режима)'''
 
         if mode in ('dota1', 'dota2'):
             self.mode = mode
@@ -68,11 +78,13 @@ class InvokerSpells:
         self.is_game_over = False
         self.next_spell()
 
+
     def toggle_mode(self):
+        '''Функция выбора режима'''
         next_mode = 'dota2' if self.mode == 'dota1' else 'dota1'
         self.reset(next_mode)
 
-
+#тесты
 if __name__ == "__main__":
     time = 60.0
     choice = input("Mode:")
